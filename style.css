@@ -1,0 +1,120 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: #96a7b0;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  /* the value antialiased is used to smooth the edges of fonts
+     and make them appear less jagged, resulting in a more polished
+     and profession look */
+  -moz-osx-font-smoothing: grayscale;
+  /* control the smoothing of fonts on web pages in the firefox
+     browser on macos */
+  -webkit-text-size-adjust: 100%;
+  /* the value 100% is used to ensure that text is displayed at
+     its original size, without any scaling or adjustments that
+     could affect its legibility and readability. */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.card__image {
+  aspect-ratio: 16 / 9;
+  /* width ~ 1.78 * height */
+  width: 100%;
+  object-fit: cover;
+  /* the value "cover" means the content of the element
+    will be scaled to cover the entire container. */
+}
+
+.card__content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  /* this element has two shadow effects, separated by comma,
+     first shadow effect has an offset of 0px in the x-axis,
+     20px on the y-axis, blur-radius: 25px, spread-radius: 5px
+     and color of the shadow. */
+  background: whitesmoke;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  will-change: transform;
+  transition: transform 0.25s ease-out;
+}
+
+.card__title {
+  color: hsl(201, 14%, 20%); 
+  /* hue: color, saturation: intensity or purity, lightness: brightness */
+  font-size: 20px;
+  padding: 10px 14px 5px;
+  margin: 0;
+}
+
+.card__description {
+  margin: 0;
+  padding: 0 14px 10px;
+  font-size: 14px;
+  color: hsl(201, 14%, 40%);
+  text-align: left;
+}
+
+.card__gloss {
+  position: absolute;
+  opacity: 0;
+  /* this element is completely transparent and not visible on the page */
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    /* the circle value specifies that the ending shape of the gradient
+       is a circle with a constant radius. */
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+    /* the gradient starts with white at the center, then transitions to
+       transparent from center to 50% of the gradient, and continues to
+       be transparent 50% to 100% (the edge) of the gradient. */
+  );
+  will-change: opacity;
+}
+
+.card__gloss.card__gloss--animatable {
+  transition: 0.25s opacity ease-out;
+}
